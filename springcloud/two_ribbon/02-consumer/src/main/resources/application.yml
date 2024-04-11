@@ -1,0 +1,47 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: consumer
+eureka:
+    client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka
+    instance:
+        hostname: localhost
+        prefer-ip-address: true
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+
+
+
+#Ribbon默认使用的是ZoneAvoidanceRule,也叫【区域亲和】负载均衡算法,优先调用一个zone区间中的服务, 并使用轮询算法
+
+#springcloud 区域内亲和算法 key怎么确定（将服务消费者和服务提供者尽可能地放置在相同区域内，以减少网络延迟）
+#通过给服务实例添加元数据来标记它们的区域，并在客户端使用定制的策略选择区域内的实例
+#"metadata": {
+#    "zone": "us-east-1"
+#}
+
+
+# 访问不用的服务可以使用不用的算法规则
+#provider:  # 先写服务提供者的应用名称
+#    ribbon:
+#        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule    #几种算法的全限定类名 (IRule接口下的子类都可以用,或者自己实现)
+
+#xxxx:  # 先写服务提供者的应用名称
+#    ribbon:
+#        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule
+
+#如果当前应用对所有服务提供者 都改用一种算法,那么只要在容器中设置IRule对象的子类即可
+
+#其他配置
+#ribbon:
+#    eager-load:
+#        enabled: false # ribbon它只有自己的话 能不能做服务发现? 不能  需要借助eureka  # ribbon需要去eureka中获取服务列表 如果false就懒加载
+#    eureka:
+#        enabled: true #启用eureka功能区的使用  默认就是开启的
+#    http:  # 我们使用ribbon 用的restTemplate发请求 java.net.HttpUrlConnection 发的请求  很方便 但是它不支持连接池
+#        client:  # 发请求的工具有很多 httpClient  它支持连接池 效率更好  如果你想改请求的工具 记得加这个依赖即可
+#            enabled: false
+#    okhttp: # 这个也是请求工具 移动端用的比较多 轻量级的请求
+#        enabled: false

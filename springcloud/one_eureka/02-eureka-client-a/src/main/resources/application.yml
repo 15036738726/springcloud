@@ -1,0 +1,21 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: eureka-client-a
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka #注册中心地址
+#################配置eureka的client以及实例信息#################
+        register-with-eureka: true #注册自己
+        fetch-registry: true #拉取服务列表
+        registry-fetch-interval-seconds: 5 # 表示 eureka-client 间隔多久去拉取(更新)注册中心服务列表信息 为了缓解服务列表的脏读问题 默认30秒
+    instance:
+        hostname: localhost
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port} # 实例 id
+        prefer-ip-address: true # 服务列表以 ip 的形式展示
+        lease-renewal-interval-in-seconds: 5 # 表示 eureka client 发送心跳给 server 端的频率 默认30秒
+        lease-expiration-duration-in-seconds: 20 #表示 eureka server 至上一次收到 client 的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该实例
+#################配置eureka的client以及实例信息#################

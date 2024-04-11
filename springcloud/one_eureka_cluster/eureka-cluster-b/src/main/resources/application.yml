@@ -1,0 +1,33 @@
+#######################不是集群,认为是一台服务器上启动了多台应用#######################
+#server:
+#    port: 8082
+#spring:
+#    application:
+#        name: eureka-cluster #应用名称3个应用保持一致
+#eureka:
+#    client:
+#        service-url:
+#            defaultZone: http://localhost:8081/eureka,http://localhost:8083/eureka
+#
+#    instance:
+#        hostname: localhost
+#        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+#        prefer-ip-address: true
+#        lease-renewal-interval-in-seconds: 5 #续约间隔
+
+#######################集群版本2#######################
+server:
+    port: 8082
+spring:
+    application:
+        name: eureka-cluster #应用名称3个应用保持一致
+eureka:
+    client:
+        service-url:
+            defaultZone: http://peer1:8081/eureka,http://peer3:8083/eureka
+
+    instance:
+        hostname: peer2
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+        prefer-ip-address: true
+        lease-renewal-interval-in-seconds: 5 #续约间隔

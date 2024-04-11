@@ -1,0 +1,74 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: nacos-config
+#    cloud: #配置中心文件名称 nacos-config 类型yml
+#        nacos:
+#            config:
+#                server-addr: http://localhost:8848 # 项目在启动的时候去这里找配置文件
+#                username: nacos
+#                password: nacos
+#                prefix: nacos-config  # 读哪个配置文件 默认用的是应用名称  是可以修改的(取决于你在配置中心的文件名字,一般创建的时候和应用名保持一致)
+#                file-extension: yml  # 文件类型
+#                namespace: 4291aa04-6dc3-46e1-aae0-669d96f65f20   #那个命名空间下的配置文件
+#                group: DEFAULT_GROUP #那个组
+
+############增加${spring.profiles.active}属性,配置中心文件名 test-dev.yml##################
+#    profiles:
+#        active: dev
+#    cloud: #因为增加了激活属性,注意,此时配置中心的文件名称一定要加上.yml后缀名,否则会读取失败
+#        nacos:
+#            config:
+#                server-addr: http://localhost:8848
+#                username: nacos
+#                password: nacos
+#                prefix: test
+#                file-extension: yml
+#                namespace: 4291aa04-6dc3-46e1-aae0-669d96f65f20
+#                group: DEFAULT_GROUP
+
+############读取多个配置文件中的内容,此时不能配置激活属性,直接写全名xx.yml###########################################
+#    cloud: # nacos-config-a-dev.yml A_GROUP;  nacos-config-b-dev.yml B_GROUP
+#        nacos:
+#            config:
+#                server-addr: http://localhost:8848
+#                username: nacos
+#                password: nacos
+#                #file-extension: yml
+#                namespace: 4291aa04-6dc3-46e1-aae0-669d96f65f20 # 目前读取多配置文件的方式只支持在同一个命名空间下
+#                extension-configs: # 可以读多个配置文件 需要在同一个命名空间下面 可以是不同的组
+#                    - dataId: nacos-config-a-dev.yml
+#                      group: A_GROUP
+#                      fileExtension: yml
+#                      refresh: true # 这是个开关,如果该配置文件被修改了,否是去加载最新的配置
+#                    - dataId: nacos-config-b-dev.yml
+#                      group: B_GROUP
+#                      fileExtension: yml
+#                      refresh: false # 不去加载
+##    profiles:
+##        active: dev
+
+
+############读取共享配置文件,他是增强版的多配置文件,因为可以配置多个(数据源这些配置,一般多个项目都是一样的,但是每个项目也有各自的配置,上边的多数据源也可以实现,但是更推荐下面这种)##################
+    profiles:
+        active: dev
+    cloud:
+        nacos:
+            config:
+                server-addr: http://localhost:8848
+                username: nacos
+                password: nacos
+                namespace: 4291aa04-6dc3-46e1-aae0-669d96f65f20
+                prefix: nacos-config-a
+                group: A_GROUP
+                file-extension: yml
+                shared-configs: # 共享配置文件 可以不同组,但是命名空间必须是同一个 这下面的配置跟 active属性无关
+                    # 这个地方我配置来多个,如果属性重复,后边的会覆盖前边设置的配置
+                    - share-config.yml # 这里可以写共享的文件名称 组默认为DEFAULT_GROUP
+                    -   dataId: nacos-config-b-dev.yml
+                        group: B_GROUP
+                        refresh: true
+
+
+

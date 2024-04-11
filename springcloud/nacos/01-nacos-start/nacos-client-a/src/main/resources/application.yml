@@ -1,0 +1,14 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: nacos-client-a
+    cloud:  #\u6CE8\u610F \u8FD9\u4E2A\u662F\u5728spring\u4E0B
+        nacos:
+            discovery:
+                server-addr: http://localhost:8848
+                username: nacos #\u7528\u6237\u540D
+                password: nacos #\u5BC6\u7801
+                service: start-client-a # \u8FD9\u4E2A\u624D\u662F\u670D\u52A1\u53D1\u73B0\u65F6\u6CE8\u518C\u5217\u8868\u7684\u540D\u5B57 \u5982\u679C\u4E0D\u5199 \u9ED8\u8BA4\u662F\u53D6${spring.application.name}
+                namespace: 4291aa04-6dc3-46e1-aae0-669d96f65f20 #\u547D\u540D\u7A7A\u95F4(\u914D\u7F6E\u4E2D\u5FC3\u521B\u5EFA\u7684\u7A7A\u95F4ID) \u5982\u679C\u4E0D\u5199\u9ED8\u8BA4\u5F80 public\u547D\u540D\u7A7A\u95F4\u4E0B\u6CE8\u518C
+                #group: A_GROUP # \u7EC4\u540D \u4E0D\u5199\u5C31\u5F80 DEFAULT_GROUP\u7EC4\u4E2D\u6CE8\u518C

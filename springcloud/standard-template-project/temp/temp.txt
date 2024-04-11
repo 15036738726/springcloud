@@ -1,0 +1,15 @@
+多模块打包问题
+项目测试成功之后,我在尝试打了user-center包,然后发现报错
+Could not resolve dependencies for project
+解决办法是 先需要把pom类型的父工程install一下,然后才能打别的包
+Could not resolve dependencies for project
+https://blog.csdn.net/budaoweng0609/article/details/129441928
+
+
+
+
+两种打包方式:
+https://blog.csdn.net/m0_55868614/article/details/120983764/
+
+IDEA中的打包Build Artifacts详解
+https://blog.csdn.net/dhklsl/article/details/136738612

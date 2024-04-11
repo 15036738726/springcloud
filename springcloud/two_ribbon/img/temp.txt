@@ -1,0 +1,19 @@
+springcloud 区域内亲和算法 key怎么确定（将服务消费者和服务提供者尽可能地放置在相同区域内，以减少网络延迟）
+通过给服务实例添加元数据来标记它们的区域，并在客户端使用定制的策略选择区域内的实例
+ "metadata": {
+    "zone": "us-east-1"
+  }
+
+Ribbon默认使用的是ZoneAvoidanceRule,也叫【区域亲和】负载均衡算法,优先调用一个zone区间中的服务, 并使用轮询算法
+
+
+整理一下restTemplate配合ribbon + eureka 是如何进行负载均衡的
+首先需要和eureka配合起来,拉取一份配置列表到本地,我们就可以通过服务名获取对应的服务列表,然后通过算法(默认是轮训的)
+获取一个被调用的机器信息,内部进行restTemplate进行http调用的时候,首先拦截请求(拦截核心类loadBalanceInterceptor 相当于restTemplate此时已经被ribbon进行托管包装了),通过服务名解析出ip和port,然后在进行调用
+
+restTemplate单独使用时 url:http://ip:port/xxx
+被ribbon托管之后,http://服务名/xxx
+
+
+浅谈Ribbon原理
+https://blog.csdn.net/u013795157/article/details/118176369

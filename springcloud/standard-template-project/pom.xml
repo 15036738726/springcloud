@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <!-- 子模块依赖关系 project-domin  <===== common-api <======user-center,order-center  -->
+    <modules>
+        <module>project-domain</module>
+        <module>common-api</module>
+        <module>user-center</module>
+        <module>order-center</module>
+    </modules>
+
+    <groupId>com.qqkj</groupId>
+    <artifactId>standard-template-project</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--全局版本号控制的地方-->
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+    </properties>
+
+    <!--标准工程模板-->
+
+    <!--子模块中都是boot项目，一个模块只能又一个父项目,所以在父工程中引入boot组件,子模块引入该父项目即可-->
+
+    <!--boot依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.12.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 这里的依赖所以的子模块都会有-->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <!-- 加在这里的依赖不会被这的引入进项目 只是做了一个版本控制-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 打包 仓库 等配置 -->
+    <!--    <build>-->
+
+    <!--    </build>-->
+
+
+
+</project>

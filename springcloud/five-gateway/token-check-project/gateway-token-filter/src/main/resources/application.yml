@@ -1,0 +1,36 @@
+server:
+    port: 80
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+        registry-fetch-interval-seconds: 3 # 网关拉去服务列表的时间缩短 默认30秒   搞3秒
+    instance:
+        hostname: localhost
+        prefer-ip-address: true
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+
+spring:
+    application:
+        name: gateway-token-filter
+
+    redis:
+        host: localhost
+        password: 123456
+        database: 0
+        port: 6379
+
+    cloud:
+        gateway:
+            discovery:
+                locator:
+                    enabled: true
+                    lower-case-service-id: true
+
+
+
+
+
+
+

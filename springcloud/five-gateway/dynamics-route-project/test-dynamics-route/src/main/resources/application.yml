@@ -1,0 +1,44 @@
+server:
+    port: 80
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+        registry-fetch-interval-seconds: 3 # 网关拉去服务列表的时间缩短 默认30秒   搞3秒
+    instance:
+        hostname: localhost
+        prefer-ip-address: true
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+
+spring:
+    application:
+        name: test-dynamics
+
+    #方式一  推荐动态路由这种方式  通过 服务名/路径 访问
+    cloud:
+      gateway:
+        discovery:
+            locator:
+                enabled: true # 开启动态路由  开启通用应用名称 找到服务的功能
+                lower-case-service-id: true  # 开启服务名称小写  这个地方如果为false 服务名大写也访问不到http://localhost/TEST-LOGIN-SERVCIE/test
+
+#调用方式  localhost:80/服务名小写/test ; http://localhost/test-login-servcie/test
+
+
+    #方式二  这种是配置路由的方式,不是动态路由,可以使用断言,而第一种动态路由是不能使用断言功能的
+#    cloud:
+#        gateway:
+#            enabled: true
+#            lower-case-service-id: true  # 开启服务名称小写  这种方式,大小写不敏感,下面的uri中的服务名大小写 都能访问成功
+#            routes:
+#                -   id: login-serivce-route
+#                    uri: lb://test-login-servcie  #lb://服务名
+#                    predicates:
+#                        -   Path=/test
+##调用方式  localhost:80/test ; http://localhost/test
+
+
+
+
+

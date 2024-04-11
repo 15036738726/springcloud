@@ -1,0 +1,33 @@
+server:
+    port: 80
+spring:
+    application:
+        name: gateway-service
+    cloud:
+        gateway:
+            enabled: true #只要加了依赖 默认开启
+            routes:
+                -   id: login-serivce-route  # 这个是路由的id 保持唯一即可
+                    uri: http://localhost:8081  # uri统一资源定位符   url 统一资源标识符
+                    predicates: # 断言是给某一个路由来设定的一种匹配规则 默认不能作用在动态路由上
+                        -   Path=/doLogin # 匹配规则  只要你Path匹配上了/doLogin 就往 uri 转发 并且将路径带上
+
+
+###################思考:如果一个服务中有100个接口,那么如何处理? 可以通过前缀解决#####################
+#    cloud:
+#        gateway:
+#            enabled: true
+#            routes:
+#                -   id: login-serivce-route
+#                    uri: http://localhost:8081
+#                    predicates:
+#                        -   Path=/myService/** #只要是前缀匹配,后边无论写什么,都能转发
+
+###################思考:如果服务器存在多台,我想做负载均衡? #####################
+#首先网关是可以单独使用的,上面两种配置geteway-service项目中中只引入了gateway组件  login-service中只引入了web模块
+#1:结合eureka,动态路由解决; 所有的服务都往eureka中进行注册,网关服务中就有服务列表,可以通过服务名进行调用
+#2:配置方式也能实现负载均衡,但是它不是动态路由;
+#下面在dynamics-route-project中测试
+
+
+

@@ -1,0 +1,13 @@
+server:
+    port: 8081
+spring:
+    application:
+        name: test-login-servcie #服务名字记得保持一致
+eureka:
+    client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka
+    instance:
+        hostname: localhost
+        prefer-ip-address: true
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}

@@ -1,0 +1,26 @@
+server:
+    port: 8761
+
+spring:
+    application:
+        name: eureka-server
+
+# eureka的配置分为三类 server(服务端)  client(客户端/服务端)  实例(客户端/服务端) eureka-server既是服务端又是客户端
+
+#################配置eureka的server以及实例信息#################
+eureka:
+    server:
+        eviction-interval-timer-in-ms: 10000 # 驱逐时间设置 服务端间隔多少毫秒做定期删除的操作
+        renewal-percent-threshold: 0.85 # 续约百分比 (一段时间内,renewalThresholdUpdateIntervalMs默认15分钟)超过85%的应用没有和你续约 那么eureka会保护服务 不会剔除任何一个
+        enable-self-preservation: true #server 的自我保护机制，避免因为网络原因造成误剔除,生产环境建议打开 默认打开
+
+    instance:
+        hostname: localhost # 服务主机名称
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port} # 实例 id
+        prefer-ip-address: true # 服务列表以 ip 的形式展示
+        lease-renewal-interval-in-seconds: 5 # 表示 eureka client 发送心跳给 server 端的频率 这个值要<服务端的剔除时间
+        lease-expiration-duration-in-seconds: 20 #表示 eureka server 至上一次收到 client 的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该实例
+
+    client:
+        register-with-eureka: false #可以设置自己不向服务中心注册
+#################配置eureka的server以及实例信息#################

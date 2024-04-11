@@ -1,0 +1,20 @@
+server:
+    port: 8080
+
+spring:
+    application:
+        name: user-serive
+eureka:
+    client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka
+
+# 超时时间设置 feign只是帮你封装了远程调用的功能  底层还是ribbon 所以我们需要去修改ribbon的时间
+ribbon:
+    ReadTimeout: 3000 # 给3s超时时间
+    ConnectTimeout: 3000 # 链接服务的超时时间
+
+#开启日志打印
+logging:
+    level:
+        com.example.feign.UserOrderFeign: debug  # 我需要打印这个接口下面的日志

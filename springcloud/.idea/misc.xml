@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka/01-eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka/02-eureka-client-a/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka/02-eureka-server-b/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka/02-eureka-client-b/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka_cluster/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka_cluster/eureka-cluster-a/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka_cluster/eureka-cluster-b/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka_cluster/eureka-cluster-c/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka_cluster/client-test/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka_cluster/eureka-cluster-final-version/pom.xml" />
+        <option value="$PROJECT_DIR$/one_eureka/03-rest-template/pom.xml" />
+        <option value="$PROJECT_DIR$/two_ribbon/pom.xml" />
+        <option value="$PROJECT_DIR$/two_ribbon/01-provider-a/pom.xml" />
+        <option value="$PROJECT_DIR$/two_ribbon/01-provider-b/pom.xml" />
+        <option value="$PROJECT_DIR$/two_ribbon/02-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/three-openfeign/pom.xml" />
+        <option value="$PROJECT_DIR$/three-openfeign/01-order-service/pom.xml" />
+        <option value="$PROJECT_DIR$/three-openfeign/02-user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/four-hystrix/pom.xml" />
+        <option value="$PROJECT_DIR$/four-hystrix/01-customer-service/pom.xml" />
+        <option value="$PROJECT_DIR$/four-hystrix/02-rent-car-service/pom.xml" />
+        <option value="$PROJECT_DIR$/four-hystrix/03-myfish/pom.xml" />
+        <option value="$PROJECT_DIR$/four-hystrix/07-demo-test/pom.xml" />
+        <option value="$PROJECT_DIR$/standard-template-project/pom.xml" />
+        <option value="$PROJECT_DIR$/standard-template-project/project-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/sleuth-project/pom.xml" />
+        <option value="$PROJECT_DIR$/sleuth-project/sleuth-test-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/sleuth-project/sleuth-test-producer/pom.xml" />
+        <option value="$PROJECT_DIR$/sleuth-project/sleuth-test-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/admin-service-project/pom.xml" />
+        <option value="$PROJECT_DIR$/admin-service-project/admin-service/pom.xml" />
+        <option value="$PROJECT_DIR$/admin-service-project/test-project/pom.xml" />
+        <option value="$PROJECT_DIR$/five-getaway/pom.xml" />
+        <option value="$PROJECT_DIR$/five-getaway/02-login-service/pom.xml" />
+        <option value="$PROJECT_DIR$/five-getaway/01-getway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/01-getway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/02-login-service/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/01-gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/dynamics-route-project/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/dynamics-route-project/01-test-login-service/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/dynamics-route-project/02-test-login-serice/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/dynamics-route-project/test-dynamics-route/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/token-check-project/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/token-check-project/gateway-token-filter/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/token-check-project/login-module/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/token-check-project/manager-center-module/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/dynamics-route-project/02-test-login-service/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/gateway-limit-project/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/gateway-limit-project/limit-test-project/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/gateway-limit-project/limit-test-service/pom.xml" />
+        <option value="$PROJECT_DIR$/five-gateway/gateway-limit-project/limit-gateway-serivce/pom.xml" />
+        <option value="$PROJECT_DIR$/three-openfeign/my-create/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/nacos-start/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/01-nacos-start/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/01-nacos-start/nacos-client-a/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/01-nacos-start/nacos-client-b/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/nacos-gateway-feign/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/02-nacos-gateway-feign/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/02-nacos-gateway-feign/gateway-server/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/02-nacos-gateway-feign/provider-server/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/02-nacos-gateway-feign/consumer-server/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos/03-nacos-config/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/three-openfeign/my-create/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

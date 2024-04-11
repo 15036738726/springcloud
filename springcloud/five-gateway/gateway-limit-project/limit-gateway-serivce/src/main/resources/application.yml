@@ -1,0 +1,45 @@
+server:
+    port: 80
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+        registry-fetch-interval-seconds: 3 # 网关拉去服务列表的时间缩短 默认30秒   搞3秒
+    instance:
+        hostname: localhost
+        prefer-ip-address: true
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+
+spring:
+    application:
+        name: limit-gateway-serivce
+
+    # 需要配置redis ,因为限流就是借助redis完成的(往redis中设置了令牌数据)
+    redis:
+        host: localhost
+        password: 123456
+        database: 0
+        port: 6379
+
+    cloud:
+        gateway:
+            enabled: true
+            routes:
+                -   id: limit-test-service-routes
+                    uri: http://localhost:8081
+                    predicates:
+                        -   Path=/test
+                    filters:
+                        -   name: RequestRateLimiter  # 这个是过滤器的名称
+                            args: # 这个过滤器的参数
+                                key-resolver: '#{@ipKeyResolver}' # 通过spel表达式取 ioc容器中bean的值
+                                redis-rate-limiter.replenishRate: 1  # 生成令牌的速度
+                                redis-rate-limiter.burstCapacity: 3  # 桶容量
+
+
+
+
+
+
+

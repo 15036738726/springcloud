@@ -1,0 +1,21 @@
+############################测试集群第二版##########################
+##向集群中的8081注册,另外两台服务器也会有该应用的注册信息;
+##任何一台服务器挂掉,只要还有存活的机器,不影响应用正常使用;
+##当然,也可以同时向三台服务器都注册 defaultZone: http://peer1:8081/eureka,http://peer1:8082/eureka,http://peer1:8083/eureka
+server:
+    port: 8080
+spring:
+    application:
+        name: client-test
+eureka:
+    client:
+        service-url:
+            defaultZone: http://peer1:8081/eureka
+            #defaultZone: http://peer1:8081/eureka,http://peer1:8082/eureka,http://peer1:8083/eureka
+    instance:
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+        hostname: localhost
+        prefer-ip-address: true
+
+
+

@@ -1,0 +1,35 @@
+#server:
+#    port: 8081
+#spring:
+#    application:
+#        name: eureka-cluster #应用名称3个应用保持一致
+#eureka:
+#    client:
+#        service-url:
+#            defaultZone: http://peer2:8082/eureka,http://peer3:8083/eureka
+#
+#    instance:
+#        hostname: peer1
+#        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+#        prefer-ip-address: true
+#        lease-renewal-interval-in-seconds: 5 #续约间隔
+
+####################最终版本,对版本2稍作修改#####################
+#"改端口,启三台" 下面这个配置,3台服务器都是一模一样的,只是端口不同
+#注册地址三台都写,启动的时候,复制启动配置,program arguments中传入启动参数(端口)
+server:
+    port: 8081 #端口是动态改变的
+spring:
+    application:
+        name: eureka-cluster #应用名称3个应用保持一致
+eureka:
+    client:
+        service-url:
+            defaultZone: http://peer1:8081/eureka,http://peer2:8082/eureka,http://peer3:8083/eureka
+
+    instance:
+        #hostname: peer1
+        #instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+        instance-id: ${spring.application.name}:${server.port}
+        prefer-ip-address: true
+        lease-renewal-interval-in-seconds: 5 #续约间隔

@@ -1,0 +1,18 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: customer-service
+eureka:
+    client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka
+
+    instance:
+        hostname: localhost
+        prefer-ip-address: true
+        instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+
+feign:
+    hystrix:
+        enabled: true  # 开启熔断 在cloud的F版以前 是默认开启的 但是因为后来有了其他的熔断组件

@@ -1,0 +1,28 @@
+Feign的接口代理对象也是在项目一开始就创建好的  同boot一样,@EnableFeignClients注解中 通过@Import(FeignClientsRegistrar.class) 导入了 FeignClientsRegistrar类
+class FeignClientsRegistrar implements ImportBeanDefinitionRegistrar
+重写了registerBeanDefinitions方法(通过BeanDefinitionRegistry往容器中设置对象)
+然后在registerFeignClient方法中完成注入
+feign.ReflectiveFeign#newInstance中是真正创建对象的方法
+
+
+以后碰到feign调用出现问题  直接定位到  feign.Client中的108行   feign-core下的feign包中的Client类
+Response convertResponse(HttpURLConnection connection, Request request) throws IOException {
+    int status = connection.getResponseCode();
+    ....
+}
+
+
+
+200 成功
+400 请求参数错误,不符合规定
+401 没有权限 没有token
+403 权限不够 有token,但是权限不够
+404 路径不匹配
+405 方法不允许  不匹配,比如post方式请求 调用时用了get
+500 提供者报错了
+503 服务不可用
+302 资源重定向
+
+org.springframework.http.HttpStatus
+
+
